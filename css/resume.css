@@ -1,0 +1,140 @@
+/* ----------  Utility wrapper (centers the résumé)  ---------- */
+.resume-wrapper {
+    min-height: 100vh;
+    /* full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* keep content near top */
+    background: #101010;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* ----------  Animated top button  ---------- */
+.resume-btn {
+    display: inline-block;
+    margin-bottom: 1.75rem;
+    padding: 0.75rem 2.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    background: linear-gradient(270deg, #ff416c, #ff4b2b, #ff416c);
+    background-size: 400% 400%;
+    animation: resume-gradientShift 5s ease infinite;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes resume-gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ----------  Main résumé card  ---------- */
+.resume-container {
+    width: clamp(280px, 90%, 900px);
+    background: #101010;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3e7ed;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.4rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+/* ----------  Individual content blocks  ---------- */
+
+.resume-section:last-child {
+    margin-bottom: 0;
+}
+
+/* ----------  Headings & text  ---------- */
+.resume-header h1 {
+    margin: 0 0 .4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.resume-section h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    letter-spacing: .05em;
+    color: #1a73e8;
+    text-transform: uppercase;
+}
+
+/* ----------  Contact row  ---------- */
+.resume-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: .95rem;
+}
+
+/* ----------  Lists & links  ---------- */
+.resume-container ul {
+    margin: .35rem 0 .7rem 1.2rem;
+    padding: 0;
+}
+
+.resume-container li {
+    margin: .25rem 0;
+}
+
+.resume-container a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.resume-container a:hover {
+    text-decoration: underline;
+}
+
+/* ----------  Medium‑plus screens  ---------- */
+@media (min-width: 600px) {
+    .resume-header h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* 1) Shrink the name a bit so it never overflows */
+    .resume-header h1 {
+        font-size: 1.6rem;
+        /* was 2 rem */
+        line-height: 1.25;
+    }
+
+    /* 2) Stack contact details vertically & center them */
+    .resume-contact {
+        flex-direction: column;
+        /* was row */
+        align-items: center;
+        text-align: center;
+        gap: .4rem;
+        /* tighter spacing on phones */
+    }
+
+    /* 3) Let long URLs (e.g., GitHub) wrap instead of forcing horizontal scroll */
+    .resume-contact a {
+        overflow-wrap: anywhere;
+        /* breaks at any point if needed */
+        word-break: break-word;
+    }
+}
